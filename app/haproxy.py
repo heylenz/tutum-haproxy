@@ -123,14 +123,20 @@ def main():
 
     if TUTUM_SERVICE_API_URI and TUTUM_CONTAINER_API_URI and TUTUM_AUTH:
         init_tutum_settings()
-        events = tutum.TutumEvents()
-        events.on_open(run_tutum)
-        events.on_message(tutum_event_handler)
-        events.run_forever()
-    else:
+        #events = tutum.TutumEvents()
+        #events.on_open(run_tutum)
+        #events.on_message(tutum_event_handler)
+        #events.run_forever()
+
+        # Sometime the stream of events just stops reporting. The below is
+        # (hopefully) a safe workaround.
         while True:
-            run()
-            time.sleep(1)
+            run_tutum()
+            time.sleep(2)
+
+    while True:
+        run()
+        time.sleep(1)
 
 
 if __name__ == "__main__":
