@@ -43,6 +43,7 @@ You can overwrite the following HAProxy configuration options:
 * `VIRTUAL_HOST` (default: `**None**`): Optional. Let HAProxy route by domain name. Format `LINK_ALIAS=DOMAIN`, comma separated.
 * `STATS_PORT` (default: `1936`): Port for the haproxy stats section. If this port is published, stats can be accessed at `http://<host-ip>:<STATS_PORT>/`
 * `STATS_AUTH` (default: `stats:stats`): Username and password required to access the haproxy stats.
+* `SERVER_CHECK` (default: `None`): Optional. Enable basic server health checks.
 
 Check [the HAProxy configuration manual](http://haproxy.1wt.eu/download/1.4/doc/configuration.txt) for more information on the above.
 

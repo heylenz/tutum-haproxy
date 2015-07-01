@@ -82,7 +82,9 @@ def cfg_backend(backend_routes, vhost):
                         if container_name.startswith(service_name):
                             server_string = "server %s %s:%s" % (container_name, addr_port["addr"], addr_port["port"])
                             if SESSION_COOKIE:
-                                server_string += " cookie check"
+                                server_string += " cookie"
+                            if SERVER_CHECK or SESSION_COOKIE:
+                                server_string += " check"
 
                             # Do not add duplicate backend routes
                             duplicated = False
