@@ -60,7 +60,7 @@ def fetch_tutum_obj(uri):
 
 def run_tutum(container_uri=TUTUM_CONTAINER_API_URI):
     global PREVIOUS_CFG_TEXT, HAPROXY_CURRENT_SUBPROCESS
-    logger.info("Fetching HAProxy container details through REST Api")
+    # logger.info("Fetching HAProxy container details through REST Api")
     container = fetch_tutum_obj(container_uri)
 
     envvars = {}
@@ -76,8 +76,8 @@ def run_tutum(container_uri=TUTUM_CONTAINER_API_URI):
         cfg_save(cfg_text, CONFIG_FILE)
         PREVIOUS_CFG_TEXT = cfg_text
         HAPROXY_CURRENT_SUBPROCESS = reload_haproxy(HAPROXY_CURRENT_SUBPROCESS)
-    else:
-        logger.info("HAProxy configuration remains unchanged")
+    # else:
+    # logger.info("HAProxy configuration remains unchanged")
 
 
 def tutum_event_handler(event):
@@ -132,7 +132,7 @@ def main():
         # (hopefully) a safe workaround.
         while True:
             run_tutum()
-            time.sleep(2)
+            time.sleep(10)
 
     while True:
         run()
